@@ -42,7 +42,7 @@ class MasterViewController: UITableViewController {
         let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .Alert)
         ac.addTextFieldWithConfigurationHandler(nil)
         
-        let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] _ in
             let answer  = ac.textFields![0]
             self.submitAnswer(answer.text!)
         }
@@ -50,6 +50,10 @@ class MasterViewController: UITableViewController {
         ac.addAction(submitAction)
         
         presentViewController(ac, animated: true, completion: nil)
+    }
+    
+    func submitAnswer(answer: String) {
+        
     }
     
     override func didReceiveMemoryWarning() {
