@@ -17,6 +17,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(promptForAnswer))
+        
         if let startWordsPath = NSBundle.mainBundle().pathForResource("start", ofType: "txt") {
             if let startWords = try? String(contentsOfFile: startWordsPath, usedEncoding: nil) {
                 allWords = startWords.componentsSeparatedByString("\n")
@@ -36,6 +38,20 @@ class MasterViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .Alert)
+        ac.addTextFieldWithConfigurationHandler(nil)
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
+            let answer  = ac.textFields![0]
+            self.submitAnswer(answer.text!)
+        }
+        
+        ac.addAction(submitAction)
+        
+        presentViewController(ac, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
