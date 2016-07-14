@@ -72,7 +72,6 @@ class MasterViewController: UITableViewController {
         
         for letter in word.characters {
             if let pos = tempWord.rangeOfString(String(letter)) {
-                print(pos)
                 tempWord.removeAtIndex(pos.startIndex)
             } else {
                 return false
@@ -87,7 +86,18 @@ class MasterViewController: UITableViewController {
     }
     
     func wordIsReal(word: String) -> Bool {
-        return true
+        
+        // Create new instance of UITextChecker class; this class is designed to spot spelling errors
+        let checker = UITextChecker()
+        
+        // Making a string range starting from beginning of word, and also holds the length of string
+        let range = NSMakeRange(0, word.characters.count)
+        
+        // Call the rangeOfMisspelledWordInString() method on the UITextChecker instance wh
+        let misspelledRange = checker.rangeOfMisspelledWordInString(word, range: range, startingAt: 0, wrap: false, language: "en")
+        
+        // Returns true if no misspellings, false if there are misspellings
+        return misspelledRange.location == NSNotFound
     }
     
     override func didReceiveMemoryWarning() {
