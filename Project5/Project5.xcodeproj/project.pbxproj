@@ -12,6 +12,7 @@
 		95A4619B1D342D6000FE48F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A461991D342D6000FE48F4 /* Main.storyboard */; };
 		95A4619D1D342D6000FE48F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95A4619C1D342D6000FE48F4 /* Assets.xcassets */; };
 		95A461A01D342D6000FE48F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95A4619E1D342D6000FE48F4 /* LaunchScreen.storyboard */; };
+		95A461A81D344E4A00FE48F4 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 95A461A71D344E4A00FE48F4 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		95A4619C1D342D6000FE48F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95A4619F1D342D6000FE48F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95A461A11D342D6000FE48F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95A461A71D344E4A00FE48F4 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				95A4619C1D342D6000FE48F4 /* Assets.xcassets */,
 				95A4619E1D342D6000FE48F4 /* LaunchScreen.storyboard */,
 				95A461A11D342D6000FE48F4 /* Info.plist */,
+				95A461A71D344E4A00FE48F4 /* start.txt */,
 			);
 			path = Project5;
 			sourceTree = "<group>";
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A461A01D342D6000FE48F4 /* LaunchScreen.storyboard in Resources */,
+				95A461A81D344E4A00FE48F4 /* start.txt in Resources */,
 				95A4619D1D342D6000FE48F4 /* Assets.xcassets in Resources */,
 				95A4619B1D342D6000FE48F4 /* Main.storyboard in Resources */,
 			);
@@ -286,6 +290,7 @@
 				95A461A61D342D6000FE48F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
