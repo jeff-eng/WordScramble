@@ -55,9 +55,6 @@ class MasterViewController: UITableViewController {
     func submitAnswer(answer: String) {
         let lowerAnswer = answer.lowercaseString
         
-        let errorTitle: String
-        let errorMessage: String
-        
         if wordIsPossible(lowerAnswer) {
             if wordIsOriginal(lowerAnswer) {
                 if wordIsReal(lowerAnswer) {
@@ -68,21 +65,14 @@ class MasterViewController: UITableViewController {
                     
                     return
                 } else {
-                    errorTitle = "Unrecognized word"
-                    errorMessage = "Can you stop making up words??!?!"
+                    showErrorMessage("Unrecognized word", errorMessage: "Can you stop making up words??!?!")
                 }
             } else {
-                errorTitle = "Word is used already"
-                errorMessage = "Be a little more creative please?"
+                showErrorMessage("Word is used already", errorMessage: "Be a little more creative please?")
             }
         } else {
-            errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from '\(title!.lowercaseString)'!"
+            showErrorMessage("Word is not possible", errorMessage: "You can't spell that word from '\(title!.lowercaseString)'!")
         }
-        
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
     }
     
     func wordIsPossible(word: String) -> Bool {
@@ -104,20 +94,29 @@ class MasterViewController: UITableViewController {
     }
     
     func wordIsReal(word: String) -> Bool {
+        if word.characters.count < 3 {
+            return false
+        } else {
+            // Create new instance of UITextChecker class; this class is designed to spot spelling errors
+            let checker = UITextChecker()
         
-        // Create new instance of UITextChecker class; this class is designed to spot spelling errors
-        let checker = UITextChecker()
+            // Making a string range starting from beginning of word, and also holds the length of string
+            let range = NSMakeRange(0, word.characters.count)
         
-        // Making a string range starting from beginning of word, and also holds the length of string
-        let range = NSMakeRange(0, word.characters.count)
+            // Call the rangeOfMisspelledWordInString() method on the UITextChecker instance which returns NSNotFound if word is spelled correctly
+            let misspelledRange = checker.rangeOfMisspelledWordInString(word, range: range, startingAt: 0, wrap: false, language: "en")
         
-        // Call the rangeOfMisspelledWordInString() method on the UITextChecker instance which returns NSNotFound if word is spelled correctly
-        let misspelledRange = checker.rangeOfMisspelledWordInString(word, range: range, startingAt: 0, wrap: false, language: "en")
-        
-        // Returns true if no misspellings, false if there are misspellings
-        return misspelledRange.location == NSNotFound
+            // Returns true if no misspellings, false if there are misspellings
+            return misspelledRange.location == NSNotFound
+        }
     }
     
+    func showErrorMessage(errorTitle: String, errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title:"OK", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
