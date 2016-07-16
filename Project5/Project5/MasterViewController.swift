@@ -47,13 +47,17 @@ class MasterViewController: UITableViewController {
             self.submitAnswer(answer.text!)
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive, handler: nil)
+        
         ac.addAction(submitAction)
+        ac.addAction(cancelAction)
         
         presentViewController(ac, animated: true, completion: nil)
     }
     
     func submitAnswer(answer: String) {
         let lowerAnswer = answer.lowercaseString
+        
         
         if wordIsPossible(lowerAnswer) {
             if wordIsOriginal(lowerAnswer) {
