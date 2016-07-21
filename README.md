@@ -28,5 +28,10 @@ Repo following the Word Scramble tutorial on www.hackingwithswift.com
 * Adding text fields to ```UIAlertController``` to accept user input
 * ```NSRange```
 
+## Updates and changes
+* Excludes answers shorter than 3 letters and displays UIAlert to user to input answer of at least 3 letters.
+* Refactoring - Error messages are created and displayed as UIAlert in showErrorMessage method. Else statements call the showErrorMessage method.
+* Added cancel button to UIAlert pop-up for user to exit out if they don't want to submit an answer.
+
 ## Attributions
 * [Project 5: Word Scramble @ hackingwithswift.com](https://www.hackingwithswift.com/read/5/overview)
