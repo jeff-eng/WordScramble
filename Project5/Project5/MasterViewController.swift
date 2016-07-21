@@ -43,7 +43,7 @@ class MasterViewController: UITableViewController {
         ac.addTextFieldWithConfigurationHandler(nil)
         
         let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] _ in
-            let answer  = ac.textFields![0]
+            let answer = ac.textFields![0]
             self.submitAnswer(answer.text!)
         }
         
@@ -57,7 +57,6 @@ class MasterViewController: UITableViewController {
     
     func submitAnswer(answer: String) {
         let lowerAnswer = answer.lowercaseString
-        
         
         if wordIsPossible(lowerAnswer) {
             if wordIsOriginal(lowerAnswer) {
